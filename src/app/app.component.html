@@ -1,0 +1,18 @@
+<div id="box">
+  <h3>Create Rhythmclipline</h3>
+  <input type="text" [(ngModel)]="rythmclipline" placeholder="SyllableText" />
+  <br /><br />
+  
+  <input type="text" [(ngModel)]="instrumentid" placeholder="InstrumentId" />
+  <br /><br />
+  <button type="submit" (click)="createRcline()">CreateRhythmclipLine</button>
+  <button (click)="reset1()">Reset</button>
+</div>
+<br /><br />
+<div id="box1">
+  <h3>Create Syllable's</h3>
+  <input type="text" [(ngModel)]="syllable" placeholder="SimpleSyllable" />
+  <br /><br />
+  <button type="submit" (click)="createSyllable()">CreateSyllable</button>
+  <button (click)="reset2()">Reset</button>
+</div>
