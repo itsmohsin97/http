@@ -12,4 +12,4 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [SyllableService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

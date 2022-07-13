@@ -2,8 +2,13 @@
   <h3>Create Rhythmclipline</h3>
   <input type="text" [(ngModel)]="rythmclipline" placeholder="SyllableText" />
   <br /><br />
-  
-  <input type="text" [(ngModel)]="instrumentid" placeholder="InstrumentId" />
+  <label>InstrumentID</label>
+  <br /><br />
+  <select id="instrumentID" [(ngModel)]="instrumentID">
+    <option *ngFor="let instrument of instrumentList" [value]="instrument.id">
+      {{ instrument.name }}
+    </option>
+  </select>
   <br /><br />
   <button type="submit" (click)="createRcline()">CreateRhythmclipLine</button>
   <button (click)="reset1()">Reset</button>

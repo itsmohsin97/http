@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { InstrumentinfoDetails, Instrument, AddInstrument } from './app.models';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { SnWebResponseEx } from './SnWebResponse';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,8 +12,9 @@ export class SyllableService {
 
   rythmclipline: string = 'http://127.0.0.1:9003/rhythmcliplines';
 
-  instrumentid: string = 'http://127.0.0.1:9002/serversideinstruments';
+  InstrumentidUrl: string = 'http://127.0.0.1:9002/serversideinstruments';
 
+  // private config: string;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -48,9 +51,8 @@ export class SyllableService {
       .pipe();
   }
 
-  public getinstrumentid(
-  ): Observable<any> {
-    this.instrumentid = 'http://127.0.0.1:9002/serversideinstruments';
+  public getInstrument(): Observable<Instrument[]> {
+    this.InstrumentidUrl = 'http://127.0.0.1:9002/serversideinstruments';;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -58,7 +60,7 @@ export class SyllableService {
       }),
     };
     return this.httpClient
-      .get<instrument[]>(this.requestUrl, httpOptions)
+      .get<Instrument[]>(this.requestUrl, httpOptions)
       .pipe();
   }
 }
