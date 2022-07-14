@@ -4,9 +4,13 @@
   <br /><br />
   <label>InstrumentID</label>
   <br /><br />
-  <select id="instrumentID" [(ngModel)]="instrumentID">
-    <option *ngFor="let instrument of instrumentList" [value]="instrument.id">
-      {{ instrument.name }}
+  <select id="instrumentid" [(ngModel)]="instrumentid">
+    <!-- <option>a598a005-b250-27dc-81e6-55474bf9831f</option> -->
+    <option
+      *ngFor="let serversideinstruments of instrumentList"
+      [value]="serversideinstruments.id"
+    >
+      {{ serversideinstruments.name }}
     </option>
   </select>
   <br /><br />
@@ -14,11 +18,12 @@
   <button (click)="reset1()">Reset</button>
 </div>
 <br /><br />
-<div id="box1">
+
+<!-- <div id="box1">
   <h3>Create Syllable's</h3>
   <input type="text" [(ngModel)]="syllable" placeholder="SimpleSyllable" />
   <br /><br />
   <button type="submit" (click)="createSyllable()">CreateSyllable</button>
 
   <button (click)="reset2()">Reset</button>
-</div>
+</div> -->

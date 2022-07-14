@@ -51,16 +51,17 @@ export class SyllableService {
       .pipe();
   }
 
-  public getInstrument(): Observable<Instrument[]> {
-    this.InstrumentidUrl = 'http://127.0.0.1:9002/serversideinstruments';;
+  public getInstrument(): Observable<any[]> {
+    this.InstrumentidUrl = 'http://127.0.0.1:9002/serversideinstruments';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'my-auth-token',
       }),
     };
+    this.rythmclipline
     return this.httpClient
-      .get<Instrument[]>(this.requestUrl, httpOptions)
+      .get<any[]>(this.InstrumentidUrl, httpOptions)
       .pipe();
   }
 }

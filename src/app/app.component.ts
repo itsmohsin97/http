@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SyllableService } from './syllable-service';
 // import { SnWebResponseEx } from './SnWebResponse';
-import { InstrumentinfoDetails, Instrument, AddInstrument } from './app.models';
+import { InstrumentinfoDetails, Instrument, AddInstrument, SongInfo } from './app.models';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +12,22 @@ export class AppComponent {
   title = 'CreateSyllable&Rythmclipline';
   public syllable: string;
   public rythmclipline: string;
-  // public Instrument : string;
-  public instrumentID: string;
+  public instrumentid: string;
   public AddInstrument: string;
-  public instrumentList: Array<Instrument>
-  // public instrumentidList: Array<instrument>;
+  public instrumentList: Array<any>
 
   constructor(
     public syllableService: SyllableService) {
     this.syllable = '';
     this.rythmclipline = '';
     this.AddInstrument = '';
-    this.instrumentID = '';
+    this.instrumentid = '';
     this.instrumentList = [];
   }
+  ngOnInit() {
+    this.getInstrument();
+  }
+
   createSyllable() {
     this.syllableService.createSyllable(this.syllable).subscribe((response) => {
       console.log(response);
@@ -33,14 +35,14 @@ export class AppComponent {
   }
   createRcline() {
     this.syllableService
-      .createRcline(this.rythmclipline, this.instrumentID)
+      .createRcline(this.rythmclipline, this.instrumentid)
       .subscribe((response: string) => {
         console.log(response);
       });
   }
   public reset1() {
     this.rythmclipline = '';
-    this.instrumentID = '';
+    this.instrumentid = '';
   }
   public reset2() {
     this.syllable = '';
@@ -49,11 +51,10 @@ export class AppComponent {
 
   public getInstrument() {
     this.syllableService.getInstrument().subscribe(
-      (resp: Instrument[]) => {
-        this.instrumentList = resp;
+      (response: any[]) => {
+        this.instrumentList = response;
         this.instrumentList.sort((a, b) => a.name.localeCompare(b.name));
         console.log(this.instrumentList);
-        // this.getRagams();
       },
       (error) => {
         console.log(error);
@@ -63,5 +64,4 @@ export class AppComponent {
       }
     );
   }
-
 }

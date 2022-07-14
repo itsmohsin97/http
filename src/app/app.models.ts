@@ -1,6 +1,6 @@
 export class InstrumentinfoDetails {
     constructor(
-        public instrumentid: string,) { }
+        public instrumentid: string,) {}
 }
 
 export class SongInfo {
@@ -10,7 +10,8 @@ export class SongInfo {
 }
 export class Instrument {
     constructor(public id: number,
-        public name: string) { }
+        public name: string,
+        public keyword: string) { }
 }//export class Instrument {
 
 
